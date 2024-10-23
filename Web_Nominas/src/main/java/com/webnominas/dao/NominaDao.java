@@ -8,7 +8,6 @@ public class NominaDao {
 
 	 	private Connection connection;
 	    private PreparedStatement statement;
-	    private boolean estadoOperacion;
 
     // READ: Obtener una nómina por ID
 	    public int obtenerSalarioPorDni(String dni) throws SQLException {
@@ -37,7 +36,7 @@ public class NominaDao {
 	    }
 	    
 	    public void crearNomina(String dni, int salario) throws SQLException {
-	        String sql = "INSERT INTO nominas (dni, sueldos) VALUES (?, ?)";
+	        String sql = "INSERT INTO nominas (dni, sueldo) VALUES (?, ?)";
 	        connection = obtenerConexion();
 
 	        try {

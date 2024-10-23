@@ -11,12 +11,11 @@
 
 <h2>Lista de Empleados</h2>
 
-<h2><a href="index.jsp">Volver al Index</a></h2>
+
 
 <table border=1>
     <thead>
         <tr>
-            <th>ID</th>
             <th>Nombre</th>
             <th>DNI</th>
             <th>Sexo</th>
@@ -27,7 +26,6 @@
     <tbody>
         <c:forEach var="empleado" items="${listaEmpleados}">
             <tr>
-                <td>${empleado.id}</td>
                 <td>${empleado.nombre}</td>
                 <td>${empleado.dni}</td>
                 <td>${empleado.sexo}</td>
@@ -37,6 +35,7 @@
         </c:forEach>
     </tbody>
 </table>
-
+<br>
+<a href="index.jsp">Volver al Index</a>
 </body>
 </html>

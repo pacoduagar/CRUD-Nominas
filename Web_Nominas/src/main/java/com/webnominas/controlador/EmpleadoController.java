@@ -259,19 +259,9 @@ public class EmpleadoController extends HttpServlet {
             // Guardar la nómina del nuevo empleado
             nominaDAO.crearNomina(dni, sueldo);
             
-            // Redirigir al listar.jsp para ver el empleado recién creado
-            List<Empleados> lista = new ArrayList<>();
-                try {
-    				lista = empleadoDAO.obtenerEmpleados();
-    			} catch (SQLException e) {
-    				e.printStackTrace();
-    			}
-                for (Empleados empleado : lista) {
-                    System.out.println(empleado);
-                }
+            request.setAttribute("success", "Empleado añadido correctamente.");
             
-            request.setAttribute("listaEmpleados", lista);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/listarEmpleados.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/crear.jsp");
             requestDispatcher.forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();

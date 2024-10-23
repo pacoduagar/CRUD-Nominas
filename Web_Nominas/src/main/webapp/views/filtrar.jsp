@@ -32,12 +32,12 @@
             <label for="categoria">Categoría:</label>
             <input type="number" id="categoria" name="categoria" value="${param.categoria}">
         </div>
-
+	<br>
         <div>
             <label for="anyos">Años:</label>
             <input type="number" id="anyos" name="anyos" value="${param.anyos}">
         </div>
-
+	<br>
         <button type="submit">Aplicar Filtros</button>
     </form>
 
@@ -46,13 +46,13 @@
         <input type="hidden" name="opcion" value="filtrar">
         <button type="submit">Eliminar Filtros</button>
     </form>
-
+	
+	<br>
     <!-- Mostrar Lista de Empleados Filtrados -->
     <h3>Resultados del Filtrado:</h3>
     <table border="1">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nombre</th>
                 <th>DNI</th>
                 <th>Sexo</th>
@@ -63,7 +63,6 @@
         <tbody>
             <c:forEach var="empleado" items="${empleados}">
                 <tr>
-                    <td>${empleado.id}</td>
                     <td>${empleado.nombre}</td>
                     <td>${empleado.dni}</td>
                     <td>${empleado.sexo}</td>

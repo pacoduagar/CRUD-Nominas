@@ -9,7 +9,11 @@
 </head>
 <body>
     <h2>Añadir Nuevo Empleado</h2>
-
+	
+	<c:if test="${not empty success}">
+        <p style="color: green;">${success}</p>
+    </c:if>
+	
     <!-- Formulario para crear un nuevo empleado -->
     <form action="empleados" method="post">
         <input type="hidden" name="opcion" value="crear">
@@ -21,7 +25,8 @@
 
         <div>
             <label for="dni">DNI:</label>
-            <input type="text" id="dni" name="dni" required>
+            <input type="text" id="dni" name="dni" pattern="[0-9]{8}[A-Za-z]{1}" 
+         maxlength="9" required>
         </div>
 
         <div>
@@ -43,7 +48,7 @@
             <input type="number" id="anyos" name="anyos" min="0" required>
         </div>
 
-        <button type="submit" name="opcion" value="listar">Añadir Empleado</button>
+        <button type="submit" >Añadir Empleado</button>
     </form>
 
     <!-- Mostrar mensajes de error si existen -->

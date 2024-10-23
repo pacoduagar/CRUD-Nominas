@@ -43,13 +43,14 @@
 				</select>
 			</div>
 			<div>
-				<label>Categoría:</label> <input type="number" name="categoria"
-					value="${empleado.categoria}" required />
+				<label>Categoría:</label> <input type="number" name="categoria" value="${empleado.categoria}" min="1" max="10" required />
 			</div>
+			<br>
 			<div>
 				<label>Años:</label> <input type="number" name="anyos"
-					value="${empleado.anyos}" required />
+					value="${empleado.anyos}" min="0" required />
 			</div>
+			<br>
 			<input type="hidden" name="opcion" value="actualizarEmpleado" />
 			<button type="submit">Actualizar Empleado</button>
 		</form>
