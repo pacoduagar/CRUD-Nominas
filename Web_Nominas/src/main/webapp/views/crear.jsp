@@ -58,6 +58,6 @@
 
     <!-- Enlace para regresar al index -->
     <br>
-    <a href="index.jsp">Volver al inicio</a>
+    <a href="javascript:history. back()">Volver</a>
 </body>
 </html>

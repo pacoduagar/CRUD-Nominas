@@ -16,6 +16,8 @@
 <h2><a href="empleados?opcion=filtrar">Filtrar empleados</a></h2>
 <h2><a href="empleados?opcion=crear">Añadir empleado</a></h2>
 
+    <a href="javascript:history. back()">Volver</a>
+
 
 </body>
 </html>

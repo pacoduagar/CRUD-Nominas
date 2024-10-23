@@ -26,9 +26,6 @@ import java.util.List;
 public class EmpleadoController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    /**
-     * Constructor por defecto para EmpleadoController.
-     */
     public EmpleadoController() {
         super();
     }
@@ -78,7 +75,11 @@ public class EmpleadoController extends HttpServlet {
     }
 
     /**
-     * Método que lista los empleados.
+     * 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
      */
     private void listarEmpleados(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -98,7 +99,13 @@ public class EmpleadoController extends HttpServlet {
             e.printStackTrace();
         }
     }
-    
+    /**
+     * 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     private void buscarSalarioPorDni(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String dni = request.getParameter("dni");
@@ -122,7 +129,13 @@ public class EmpleadoController extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/buscarEmpleado.jsp");
         dispatcher.forward(request, response);
     }
-    
+    /**
+     * 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     private void buscarEmpleadoPorDni(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String dni = request.getParameter("dni");
@@ -143,7 +156,13 @@ public class EmpleadoController extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/modificarEmpleado.jsp");
         dispatcher.forward(request, response);
     }
-    
+    /**
+     * 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     private void actualizarEmpleado(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String dni = request.getParameter("dni"); // Capturamos el DNI del empleado
@@ -194,7 +213,13 @@ public class EmpleadoController extends HttpServlet {
         requestDispatcher.forward(request, response);
     }
 
-
+    /**
+     * 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     private void filtrarEmpleados(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String sexo = request.getParameter("sexo");
@@ -227,7 +252,13 @@ public class EmpleadoController extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/filtrar.jsp");
         dispatcher.forward(request, response);
     }
-
+    /**
+     * 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     private void crearEmpleado(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	RequestDispatcher dispatcher = request.getRequestDispatcher("/views/crear.jsp");

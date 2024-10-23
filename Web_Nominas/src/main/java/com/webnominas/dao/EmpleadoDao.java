@@ -13,44 +13,6 @@ public class EmpleadoDao {
     private boolean estadoOperacion;
 
     /**
-     * Guarda un empleado en la base de datos.
-     *
-     * @param empleado el objeto Empleado que se desea guardar.
-     * @return true si el empleado se guarda correctamente; false en caso contrario.
-     * @throws SQLException si ocurre un error al acceder a la base de datos.
-     */
-    public boolean guardar(Empleados empleado) throws SQLException {
-        String sql = null;
-        estadoOperacion = false;
-        connection = obtenerConexion();
-
-        try {
-            connection.setAutoCommit(false); // Iniciar la transacción
-            sql = "INSERT INTO empleados (nombre, dni, sexo, categoria, anyos) VALUES (?, ?, ?, ?, ?)";
-            statement = connection.prepareStatement(sql);
-
-            // Insertar los datos del empleado
-            statement.setString(1, empleado.getNombre());
-            statement.setString(2, empleado.getDni());
-            statement.setString(3, String.valueOf(empleado.getSexo()));
-            statement.setInt(4, empleado.getCategoria());
-            statement.setInt(5, empleado.getAnyos());
-
-            // Ejecutar la inserción y verificar si fue exitosa
-            estadoOperacion = statement.executeUpdate() > 0;
-
-            connection.commit(); // Confirmar la transacción
-            statement.close();
-            connection.close();
-        } catch (SQLException e) {
-            connection.rollback(); // Revertir cambios en caso de error
-            e.printStackTrace();
-        }
-
-        return estadoOperacion;
-    }
-
-    /**
      * Obtiene un empleado por su DNI.
      *
      * @param dni el DNI del empleado a buscar.
@@ -151,44 +113,16 @@ public class EmpleadoDao {
     }
 
     
+
     /**
-     * Obtiene un empleado por su ID.
-     *
-     * @param id el ID del empleado a buscar.
-     * @return el objeto Empleado si se encuentra; null en caso contrario.
-     * @throws SQLException si ocurre un error al acceder a la base de datos.
+     * 
+     * @param sexo
+     * @param nombre
+     * @param categoria
+     * @param anyos
+     * @return
+     * @throws SQLException
      */
-    public Empleados obtenerEmpleadoPorId(int id) throws SQLException {
-        ResultSet resultSet = null;
-        Empleados empleado = null;
-
-        String sql = "SELECT * FROM empleados WHERE id = ?";
-        connection = obtenerConexion();
-
-        try {
-            statement = connection.prepareStatement(sql);
-            statement.setInt(1, id); // Cambiado para usar ID en lugar de DNI
-            resultSet = statement.executeQuery();
-
-            if (resultSet.next()) {
-                empleado = new Empleados();
-                empleado.setId(resultSet.getInt("id"));
-                empleado.setNombre(resultSet.getString("nombre"));
-                empleado.setDni(resultSet.getString("dni"));
-                empleado.setSexo(resultSet.getString("sexo").charAt(0));
-                empleado.setCategoria(resultSet.getInt("categoria"));
-                empleado.setAnyos(resultSet.getInt("anyos"));
-            }
-
-            statement.close();
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return empleado;
-    }
-    
     public List<Empleados> filtrarEmpleados(String sexo, String nombre, Integer categoria, Integer anyos) throws SQLException {
         List<Empleados> listaEmpleados = new ArrayList<>();
         StringBuilder sql = new StringBuilder("SELECT * FROM empleados WHERE 1=1");
@@ -250,7 +184,11 @@ public class EmpleadoDao {
 
         return listaEmpleados;
     }
-    
+    /**
+     * 
+     * @param empleado
+     * @throws SQLException
+     */
     public void crearEmpleado(Empleados empleado) throws SQLException {
         String sql = "INSERT INTO empleados (nombre, dni, sexo, categoria, anyos) VALUES (?, ?, ?, ?, ?)";
         connection = obtenerConexion();
@@ -314,10 +252,9 @@ public class EmpleadoDao {
     }
 
     /**
-     * Obtiene la conexión a la base de datos.
-     *
-     * @return la conexión a la base de datos.
-     * @throws SQLException si ocurre un error al obtener la conexión.
+     * 
+     * @return
+     * @throws SQLException
      */
     private Connection obtenerConexion() throws SQLException {
         // Asegúrate de ajustar esta línea para usar tu propia clase de conexión o detalles

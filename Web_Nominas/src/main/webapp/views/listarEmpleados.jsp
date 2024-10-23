@@ -36,6 +36,6 @@
     </tbody>
 </table>
 <br>
-<a href="index.jsp">Volver al Index</a>
+    <a href="javascript:history. back()">Volver</a>
 </body>
 </html>
